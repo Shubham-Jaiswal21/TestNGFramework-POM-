@@ -3,7 +3,7 @@
 <suite name="Test-Suite">
   <test  name="Checking TestSuite">
     <classes>
-      <class name="test.randomTestInTestSuit"/>
+      <class name="test.testFoodOrder"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

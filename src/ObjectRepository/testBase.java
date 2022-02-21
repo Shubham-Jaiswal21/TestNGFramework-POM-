@@ -1,8 +1,12 @@
 package ObjectRepository;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -50,9 +54,19 @@ public class testBase {
 	{
 		driver.findElement(locator).click();
 	}
+	
+	public void sendKeys(WebDriver driver , By locator, String keys)
+	{
+		driver.findElement(locator).sendKeys(keys);
+	}
 
 	public void waitElementUntilDisplayed(WebDriver driver ,By locator){//===Wait for element until displayed==>
 		WebDriverWait wait = new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	}
+	
+	public void waitElementUntilDisplayed(WebDriver driver ,By locator, int timer){//===Wait for element until displayed==>
+		WebDriverWait wait = new WebDriverWait(driver,timer);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 
@@ -64,5 +78,52 @@ public class testBase {
 	public void implicitWait(WebDriver driver , int time)
 	{
 		driver.manage().timeouts().implicitlyWait(time,TimeUnit.SECONDS) ;
+	}
+	
+	public  boolean isElementPresent(WebDriver driver ,By locator,int timmer){
+		try {
+			waitElementUntilDisplayed(driver, locator,timmer);
+			return true;
+		}catch(Exception e) {
+			//System.out.println(locator + " Not found");
+			System.out.println(e);
+			return false;
+		}
+
+	}
+	
+	public void scrollDownScreen(WebDriver driver){
+		JavascriptExecutor je = (JavascriptExecutor) driver;
+		je.executeScript("window.scrollBy(0,500)", "");
+	}
+
+
+	public void scrollUpScreen(WebDriver driver){
+		JavascriptExecutor je = (JavascriptExecutor) driver;
+		je.executeScript("window.scrollBy(0,-500)", "");
+	}
+
+	public void ScrollToElementLocation(WebDriver driver,By locator){	
+		String location =driver.findElement(locator).getLocation().toString();
+		JavascriptExecutor je = (JavascriptExecutor) driver;
+		je.executeScript("window.scrollTo"+location+"", "");
+	}
+	public void clickAlertOKIfPresent(WebDriver driver){
+		try
+		{
+		Alert alert = driver.switchTo().alert();
+		alert.accept();
+		}
+		catch (NoAlertPresentException Ex) 
+	    { 
+	        System.out.println("No Alert Present to click");
+	    }
+	}
+	
+	public int randomNumberGenerator(int n)
+	{
+		Random objGenerator = new Random();
+		int randomNumber = objGenerator.nextInt(n);
+		return randomNumber;
 	}
 }
