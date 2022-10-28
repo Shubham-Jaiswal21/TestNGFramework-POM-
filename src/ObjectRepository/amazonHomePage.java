@@ -27,4 +27,9 @@ public class amazonHomePage extends testBase{
 	{
 		driver.findElement(By.xpath("//input[@value='Go' and @type='submit']")).click();
 	}
+	
+	public void clickSignInButton()
+	{
+		driver.findElement(By.xpath("//span[contains(text(),'Account & Lists')]/span")).click();
+	}
 }

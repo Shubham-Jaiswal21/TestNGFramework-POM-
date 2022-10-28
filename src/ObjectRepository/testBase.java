@@ -23,9 +23,9 @@ public class testBase {
 
 	}
 
-	public static void openBrowser(String browser)
+	public static void openBrowser(String website)
 	{
-		driver.get(browser);
+		driver.get(website);
 		driver.manage().window().maximize();
 	}
 
