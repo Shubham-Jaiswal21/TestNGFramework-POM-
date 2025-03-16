@@ -4,6 +4,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.Random;
 
@@ -91,5 +92,9 @@ public class commonUtils {
             System.out.println("Price on Both Amazon and Flipkart are Same. The Actual price is : " + price1);
         else
             System.out.println("Price on Flipkart is more than Amazon. Actual Price on Flipkart is : " + price2);
+    }
+
+    public static String getSchemaPath(String schemaFileName) {
+        return Paths.get(System.getProperty("user.dir"), "src", "resources", "response_schema", schemaFileName).toString();
     }
 }

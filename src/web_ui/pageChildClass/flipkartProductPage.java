@@ -1,10 +1,9 @@
-package pageChildClass;
+package web_ui.pageChildClass;
 
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import test.testBase;
 
 public class flipkartProductPage {
     WebDriver driver;

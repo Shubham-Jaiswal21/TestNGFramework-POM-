@@ -1,4 +1,4 @@
-package pageChildClass;
+package web_ui.pageChildClass;
 
 import java.util.concurrent.TimeUnit;
 

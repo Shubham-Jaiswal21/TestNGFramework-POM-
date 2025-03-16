@@ -1,4 +1,4 @@
-package pageChildClass;
+package web_ui.pageChildClass;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
