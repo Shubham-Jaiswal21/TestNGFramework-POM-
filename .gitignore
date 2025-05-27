@@ -1,1 +1,3 @@
 /target/
+git rm --cached .settings/org.eclipse.core.resources.prefs
+test-output/
