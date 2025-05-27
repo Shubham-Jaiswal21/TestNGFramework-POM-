@@ -1,3 +1,7 @@
 /target/
 /.settings/org.eclipse.core.resources.prefs
 /test-output/
+
+# IntelliJ IDEA
+.idea/
+*.iml
